@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="item" *ngFor="let item of Notifies">
+        <div class="profile">
+            <img *ngIf="item.TargetMember.Image" [src]="AddBaseUrlFileServer(item.TargetMember.Image)">
+            <span *ngIf="!item.TargetMember.Image" class="material-icons profile">
+                account_circle
+            </span>
+            <div class="n">
+                <span class="name">{{item.TargetMember.Name+" "+item.TargetMember.Family}}</span>
+                <span class="username">{{item.TargetMember.Username}}</span>
+            </div>
+
+            <div class="icon">
+                <span class="material-icons" *ngIf="item.Type==NotifyType.NotifyTypeComment">
+                    comment
+                </span>
+                <span class="material-icons" *ngIf="item.Type==NotifyType.NotifyTypeLike" style="color: red;">
+                    favorite
+                </span>
+                <span class="material-icons" *ngIf="item.Type==NotifyType.NotifyTypeFollow" style="color: #00874C;">
+                    add_circle_outline
+                </span>
+            </div>
+        </div>
+        <div class="content">
+            {{item.Content}}
+        </div>
+    </div>
+</div>

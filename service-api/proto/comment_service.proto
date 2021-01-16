@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+package pb_comment;
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "models.proto";
+
+option go_package = "github.com/EsmaeilMazahery/wild/proto/pb/pb_comment";
+
+// These annotations are used when generating the OpenAPI file.
+option (protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    version: "1.0"
+  },
+  external_docs: {
+    url: "https://github.com/EsmaeilMazahery/wild",
+    description: "gRPC-gateway wild repository"
+  },
+  schemes: HTTP,
+  schemes: HTTPS,
+};
+
+service CommentService {
+  rpc Add(AddRequest) returns (AddResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/comment/add"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Add New Comment"
+      description: "Add New Comment"
+      tags: "Comment"
+    };
+  };
+
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/comment/list"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "List Comment"
+      description: "List Comment"
+      tags: "Comments"
+    };
+  };
+
+  rpc Like(LikeRequest) returns (LikeResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/comment/like"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Like Comment"
+      description: "Like Comment"
+      tags: "Like"
+    };
+  };
+
+  rpc MyComments(MyCommentsRequest) returns (MyCommentsResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/comment/my-comments"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "List Comment"
+      description: "List Comment"
+      tags: "Comments"
+    };
+  };
+
+}
+
+message AddRequest{
+  pb_models.Comment Comment=1;
+}
+
+message AddResponse{
+  string ID = 1;
+}
+
+message ListRequest{
+  int64 Page=1;
+  string PostID=2;
+}
+
+message ListResponse{
+  repeated pb_models.Comment Comments = 1;
+  bool ExistMore = 2;
+}
+
+message LikeRequest{
+  string ID=1;
+  bool Like=2;
+}
+
+message LikeResponse{
+  bool Result = 1;
+}
+
+message MyCommentsRequest{
+  int64 Page=1;
+}
+
+message MyCommentsResponse{
+  repeated pb_models.Comment Comments = 1;
+  bool ExistMore = 2;
+}

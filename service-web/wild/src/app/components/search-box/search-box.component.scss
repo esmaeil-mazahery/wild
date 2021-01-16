@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  margin-top: 50px;
+
+  input {
+    flex-grow: 1;
+    border: 0px;
+
+    &:focus,
+    &:hover {
+      border: 0px;
+      outline: 0px;
+    }
+  }
+}

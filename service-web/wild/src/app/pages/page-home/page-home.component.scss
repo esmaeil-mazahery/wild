@@ -1,0 +1,34 @@
+@import "vars";
+
+.container {
+  display: flex;
+  margin: auto;
+  width: 900px;
+  height: 100%;
+
+  .menu {
+    flex-basis: 270px;
+    border-left: 1px solid #707070;
+    padding-top: 50px;
+  }
+
+  .list {
+    flex-grow: 1;
+    padding: 0px 10px;
+    overflow-y: auto;
+
+    hr {
+      border-top: 5px solid;
+    }
+  }
+}
+
+
+.mobile {
+  display: none;
+
+
+  @include breakpoint(-sm) {
+    display: flex;
+  }
+}

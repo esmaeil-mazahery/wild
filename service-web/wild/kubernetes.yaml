@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karmoj-web-client-dep
+  labels:
+    app: karmoj-web-client-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: karmoj-web-client-dep
+  template:
+    metadata:
+      labels:
+        app: karmoj-web-client-dep
+    spec:
+      nodeName: kmaster
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: karmoj-web-client-dep
+          resources: {}
+          image: karmoj-web-client:<VERSION>
+          env:
+          - name: SERVE_PORT
+            value: '80'
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: karmoj-web-client-svc
+  labels:
+    app: karmoj-web-client-dep
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30036
+      protocol: TCP
+      name: http
+  type: NodePort
+  selector:
+    app: karmoj-web-client-dep

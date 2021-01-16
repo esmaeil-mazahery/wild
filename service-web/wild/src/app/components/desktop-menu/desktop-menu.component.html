@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="profile">
+    <div class="img">
+      <img *ngIf="profile.Image" [src]="AddBaseUrlFileServer(profile.Image)">
+      <span *ngIf="!profile.Image" class="material-icons">
+        account_circle
+      </span>
+    </div>
+    <div class="name">
+      <span class="n">
+        {{profile.Name+" "+profile.Family}}
+      </span>
+      <span class="u">
+        {{profile.Username}}
+      </span>
+    </div>
+  </div>
+  <div class="menu">
+    <a href="/" [ngClass]="{'active': inLocation('/')}">
+      <span class="t">خانه</span>
+      <span class="material-icons">
+        home
+      </span>
+    </a>
+    <a href="/search" [ngClass]="{'active': inLocation('/search')}">
+      <span class="t">گشت و گذار</span>
+      <span class="material-icons">
+        search
+      </span>
+    </a>
+
+    <a href="/notification" [ngClass]="{'active': inLocation('/notification')}">
+      <span class="t">اعلانها</span>
+      <span class="material-icons">
+        notifications_none
+      </span>
+    </a>
+
+    <a href="/profile" [ngClass]="{'active': inLocation('/profile')}">
+      <span class="t">پروفایل</span>
+      <span class="material-icons">
+        account_circle
+      </span>
+    </a>
+
+    <div class="space"></div>
+    <a (click)="LogOut()">
+      <span class="t">خروج</span>
+      <span class="material-icons">
+        logout
+      </span>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package pb_models;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/EsmaeilMazahery/wild/proto/pb/pb_models";
+
+message Member{
+    string ID = 1;
+    string Username = 2;
+    string Name = 3;
+    string Family = 4;
+    string Mobile = 5;
+    string Image = 6;
+    string Email = 7;
+    string Password = 8;
+    bool Enable = 9;
+    string Token = 10;
+    string ImageHeader = 11;
+    int64 Following = 12;
+    int64 Follower = 13;
+    google.protobuf.Timestamp RegisterDate=14;
+    string Biography=15; 
+
+    bool MemberFollow = 16; 
+}
+
+message Comment{
+    string ID=1;
+    string PostID=2;
+    string Content = 3;
+    string Image = 4;
+    google.protobuf.Timestamp  RegisterDate= 5;
+    int64 CountLikes = 6;
+    repeated string Likes = 7;
+    string MemberID = 8;
+    Member Member = 9;
+
+    bool MemberLike = 10; 
+}
+
+message Post{
+    string ID = 1;
+    string Content = 2;
+    string Image = 3;
+    int64 CountLikes = 4;
+    string MemberID = 5;
+    Member Member = 6;
+    bool MemberLike = 7;
+    repeated string Likes = 8;
+    repeated Comment Comments = 9;
+    google.protobuf.Timestamp  RegisterDate = 10;
+    repeated string Tags = 11;
+}
+
+
+
+
+message Notify{
+    enum NotifyType {
+        NotifyTypeUnknown = 0;
+        NotifyTypeFollow= 1;
+        NotifyTypeLike= 2;
+        NotifyTypeComment= 3;
+    }
+
+    string ID = 1;
+    string Content = 2;
+    NotifyType Type = 3;
+    google.protobuf.Timestamp RegisterDate = 4;
+    string OwnerMemberID = 5;
+    string TargetMemberID = 6;
+    Member OwnerMember = 7;
+    Member TargetMember = 8;
+}

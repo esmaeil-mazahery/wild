@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wild-api-client-dep
+  labels:
+    app: wild-api-client-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wild-api-client-panel-dep
+  template:
+    metadata:
+      labels:
+        app: wild-api-client-panel-dep
+    spec:
+      nodeName: kmaster
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: wild-api-client-panel-dep
+          resources: {}
+          image: wild-api-client-panel:<VERSION>
+          env:
+            - name: wild_MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: password
+            - name: wild_MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: username
+            - name: wild_MONGO_ADDRESS
+              value: wild-data-mongo
+            - name: SERVE_HTTP
+              value: "true"
+            - name: SERVE_PORT
+              value: "80"
+            - name: GETEWAY_PORT
+              value: "90"
+            - name: wild_TIMEOUT_DB
+              value: "5"
+            - name: SERVICE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: wild-api-client-panel-sc
+                  key: secret_key
+            - name: SERVICE_TOKEN_DURATION
+              valueFrom:
+                secretKeyRef:
+                  name: wild-api-client-panel-sc
+                  key: token_duration
+          ports:
+            - containerPort: 80
+            - containerPort: 90
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wild-api-client-panel-svc
+  labels:
+    app: wild-api-client-panel-dep
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30037
+      protocol: TCP
+      name: grpc
+    - port: 90
+      targetPort: 80
+      nodePort: 30038
+      protocol: TCP
+      name: geteway
+  type: NodePort
+  selector:
+    app: wild-api-client-panel-dep

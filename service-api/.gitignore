@@ -1,0 +1,5 @@
+.vscode
+.idea
+cert/*.pem
+OpenAPI/auth_service.swagger.json
+proto/pb

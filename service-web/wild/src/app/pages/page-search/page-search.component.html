@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="menu">
+    <app-desktop-menu></app-desktop-menu>
+  </div>
+  <div class="list">
+    <app-search-box (search)="search($event)"></app-search-box>
+    <hr>
+    <app-suggestion *ngIf="postList==null || postList.length==0"></app-suggestion>
+    <app-post-list [list]="postList"></app-post-list>
+  </div>
+</div>
+<div class="mobile">
+  <app-mobile-menu></app-mobile-menu>
+</div>

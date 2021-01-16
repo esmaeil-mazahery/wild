@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package pb_notify;
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "models.proto";
+
+option go_package = "github.com/EsmaeilMazahery/wild/proto/pb/pb_notify";
+
+// These annotations are used when generating the OpenAPI file.
+option (protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    version: "1.0"
+  },
+  external_docs: {
+    url: "https://github.com/EsmaeilMazahery/wild",
+    description: "gRPC-gateway wild repository"
+  },
+  schemes: HTTP,
+  schemes: HTTPS,
+};
+
+service NotifyService {
+
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/notify/list"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "List notify"
+      description: "List notify"
+      tags: "notify"
+    };
+  };
+
+  rpc Read(ReadRequest) returns (ReadResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/notify/read"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Read notify"
+      description: "Read notify"
+      tags: "Read notify"
+    };
+  };
+}
+
+message ListRequest{
+  int64 Page=1;
+}
+
+message ListResponse{
+  repeated pb_models.Notify Notifies = 1;
+  bool ExistMore = 2;
+}
+
+message ReadRequest{
+  repeated string IDs = 1;
+}
+
+message ReadResponse{
+
+}

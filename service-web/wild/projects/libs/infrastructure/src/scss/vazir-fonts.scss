@@ -1,0 +1,302 @@
+@font-face {
+  font-family: Vazir;
+  font-style: normal;
+  font-weight: 900;
+  src: url('../../assets/Fonts/Vazir/Vazir-Black.eot');
+  src: url('../../assets/Fonts/Vazir/Vazir-Black.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('../../assets/Fonts/Vazir/Vazir-Black.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('../../assets/Fonts/Vazir/Vazir-Black.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../assets/Fonts/Vazir/Vazir-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-style: normal;
+  font-weight: bold;
+  src: url('../../assets/Fonts/Vazir/Vazir-Bold.eot');
+  src: url('../../assets/Fonts/Vazir/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('../../assets/Fonts/Vazir/Vazir-Bold.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('../../assets/Fonts/Vazir/Vazir-Bold.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../assets/Fonts/Vazir/Vazir-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-style: normal;
+  font-weight: 500;
+  src: url('../../assets/Fonts/Vazir/Vazir-Medium.eot');
+  src: url('../../assets/Fonts/Vazir/Vazir-Medium.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('../../assets/Fonts/Vazir/Vazir-Medium.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('../../assets/Fonts/Vazir/Vazir-Medium.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../assets/Fonts/Vazir/Vazir-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-style: normal;
+  font-weight: 300;
+  src: url('../../assets/Fonts/Vazir/Vazir-Light.eot');
+  src: url('../../assets/Fonts/Vazir/Vazir-Light.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('../../assets/Fonts/Vazir/Vazir-Light.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('../../assets/Fonts/Vazir/Vazir-Light.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../assets/Fonts/Vazir/Vazir-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 200;
+  src: url('../../assets/Fonts/Vazir/Vazir-Thin.eot');
+  src: url('../../assets/Fonts/Vazir/Vazir-Thin.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('../../assets/Fonts/Vazir/Vazir-Thin.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('../../assets/Fonts/Vazir/Vazir-Thin.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../assets/Fonts/Vazir/Vazir-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-style: normal;
+  font-weight: normal;
+  src: url('../../assets/Fonts/Vazir/Vazir.eot');
+  src: url('../../assets/Fonts/Vazir/Vazir.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('../../assets/Fonts/Vazir/Vazir.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('../../assets/Fonts/Vazir/Vazir.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../assets/Fonts/Vazir/Vazir.ttf') format('truetype');
+}
+
+body {
+  font-family: Vazir !important;
+  font-weight: 300;
+  direction: rtl;
+  background-color: #fff;
+  line-height: 1.6rem;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+.mat-input-element {
+  font-family: Vazir !important;
+  line-height: 1.6rem;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-small {
+  font-size: 0.8em;
+}
+
+.text-xsmall {
+  font-size: 0.6em;
+}
+
+.text-large {
+  font-size: 1.2em;
+}
+
+.text-xlarge {
+  font-size: 1.4em;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-ultralight {
+  font-weight: 200;
+}
+
+.text-light {
+  font-weight: 300;
+}
+
+.text-regular {
+  font-weight: normal;
+}
+
+.text-medium {
+  font-weight: 500;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-black {
+  font-weight: 900;
+}
+
+blockquote {
+  font-weight: 500;
+  padding: 10px;
+  border: 1px dashed #666666;
+}
+
+.mainbox {
+  width: 100%;
+  background-color: #EFEFEF;
+  display: table;
+  margin-bottom: 30px;
+  border-right: 8px solid #FFFF33;
+}
+
+.mainboxnegativ {
+  width: 100%;
+  background-color: #000000;
+  display: table;
+  margin-bottom: 30px;
+  border-right: 8px solid #FFFF33;
+  color: #F9F9F9;
+}
+
+.mainbox2 {
+  font-size: 1em;
+  width: 90%;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.mainbox3 {
+  width: 100%;
+  background-color: #b8b8b8;
+  display: table;
+  margin-bottom: 30px;
+  border-right: 8px solid #bd70ff;
+}
+
+.mainbox2negativ {
+  font-size: 1em;
+  color: #F9F9F9;
+  background-color: #000000;
+  padding-right: 20px;
+}
+
+.farsiparagraph {
+  font-size: 1em;
+  width: 47%;
+  float: right;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.englishparagraph {
+  font-size: 1em;
+  width: 47%;
+  float: left;
+  direction: ltr;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.rightbox {
+  width: 60%;
+  padding-right: 20px;
+  padding-left: 5px;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  min-width: 0px;
+  background-color: #F7F7F7;
+
+}
+
+.titelbox {
+  width: 60%;
+  padding-right: 25px;
+  padding-left: 0px;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  min-width: 0px;
+  background-color: #F2F2F2;
+  color: #4B4B4B;
+}
+
+
+.lefttbox {
+  padding-right: 20px;
+  padding-left: 4px;
+  float: right;
+  margin-bottom: 10px;
+  min-width: 0px;
+}
+
+.alphabet {
+  width: 35%;
+  float: left;
+  font-size: 21em;
+  text-align: center;
+  font-weight: 500;
+  color: #999999;
+}
+
+.alphabet2 {
+  width: 35%;
+  float: left;
+  direction: ltr;
+  font-size: 1.6em;
+  text-align: left;
+  font-weight: 500;
+  color: #333333;
+  margin-top: 100px;
+}
+
+.footer {
+  font-weight: 300;
+  font-size: 0.7em;
+  text-align: center;
+  direction: ltr;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}

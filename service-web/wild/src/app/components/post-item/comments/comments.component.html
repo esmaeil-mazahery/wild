@@ -1,0 +1,6 @@
+<div class="container">
+    <mat-spinner *ngIf="list==null"></mat-spinner>
+    <ng-container *ngIf="list!=null">
+        <app-comment-item *ngFor="let item of list" [comment]="item"></app-comment-item>
+    </ng-container>
+</div>

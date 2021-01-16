@@ -1,0 +1,24 @@
+<div class="container">
+    <img class="profile" *ngIf="comment.Member && comment.Member?.Image"
+        [src]="AddBaseUrlFileServer(comment.Member?.Image)">
+    <span class="profile material-icons" *ngIf="!comment.Member || !comment.Member.Image">
+        account_circle
+    </span>
+    <div class="comment">
+        <div class="head">
+            <h4>{{comment.Member?.Name +" "+comment.Member?.Family }}</h4>
+            <button mat-icon-button (click)="like()">
+                <span class="material-icons red" *ngIf="comment.MemberLike">
+                    favorite
+                </span>
+                <span class="material-icons" *ngIf="!comment.MemberLike">
+                    favorite_border
+                </span>
+            </button>
+        </div>
+        <img *ngIf="comment.Image" [src]="AddBaseUrlFileServer(comment.Image)">
+        <p>
+            {{comment.Content}}
+        </p>
+    </div>
+</div>

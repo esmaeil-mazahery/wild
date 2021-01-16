@@ -1,0 +1,212 @@
+// Predefined Break-points
+$media-zero: 0px;
+$media-xxs: 320px;
+$media-xs: 480px;
+$media-sm: 600px;
+$media-md: 960px;
+$media-lg: 1280px;
+$media-xl: 1920px;
+
+//z-index
+$zindex-mobilestepper: 1000;
+$zindex-appbar: 1100;
+$zindex-drawer: 1200;
+$zindex-modal: 1300;
+$zindex-snackbar: 1400;
+$zindex-tooltip: 1500;
+
+.icon-spin {
+  -webkit-animation: icon-spin 2s infinite linear;
+  animation: icon-spin 2s infinite linear;
+}
+
+.icon-pulse {
+  -webkit-animation: icon-spin 1s infinite steps(8);
+  animation: icon-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin box-shadow($args...) {
+  -webkit-box-shadow: $args;
+  box-shadow: $args;
+}
+
+.material-icons.rtl {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+@mixin breakpoint($point) {
+  @if $point==xl {
+    @media (min-width: $media-xl) {
+      @content ;
+    }
+  }
+
+  @else if $point==-xl {
+    @media (max-width: $media-xl) {
+      @content ;
+    }
+  }
+
+  @else if $point==lg-xl {
+    @media (min-width: $media-lg) and (max-width: $media-xl) {
+      @content ;
+    }
+  }
+
+  @if $point==lg {
+    @media (min-width: $media-lg) {
+      @content ;
+    }
+  }
+
+  @else if $point==-lg {
+    @media (max-width: $media-lg) {
+      @content ;
+    }
+  }
+
+  @else if $point==md-lg {
+    @media (min-width: $media-md) and (max-width: $media-lg) {
+      @content ;
+    }
+  }
+
+  @if $point==md {
+    @media (min-width: $media-md) {
+      @content ;
+    }
+  }
+
+  @else if $point==-md {
+    @media (max-width: $media-md) {
+      @content ;
+    }
+  }
+
+  @else if $point==sm-md {
+    @media (min-width: $media-sm) and (max-width: $media-md) {
+      @content ;
+    }
+  }
+
+  @if $point==sm {
+    @media (min-width: $media-sm) {
+      @content ;
+    }
+  }
+
+  @else if $point==-sm {
+    @media (max-width: $media-sm) {
+      @content ;
+    }
+  }
+
+  @else if $point==xs-sm {
+    @media (min-width: $media-xs) and (max-width: $media-sm) {
+      @content ;
+    }
+  }
+
+  @if $point==xs {
+    @media (min-width: $media-xs) {
+      @content ;
+    }
+  }
+
+  @else if $point==-xs {
+    @media (max-width: $media-xs) {
+      @content ;
+    }
+  }
+
+  @else if $point==xxs-xs {
+    @media (min-width: $media-xxs) and (max-width: $media-xs) {
+      @content ;
+    }
+  }
+
+  @if $point==xxs {
+    @media (min-width: $media-xxs) {
+      @content ;
+    }
+  }
+
+  @else if $point==-xxs {
+    @media (max-width: $media-xxs) {
+      @content ;
+    }
+  }
+
+  @else if $point==xxxs-xxs {
+    @media (min-width: $media-xxxs) and (max-width: $media-xxs) {
+      @content ;
+    }
+  }
+
+  @if $point==xxxs {
+    @media (min-width: $media-xxxs) {
+      @content ;
+    }
+  }
+
+  @else if $point==-xxxs {
+    @media (max-width: $media-xxxs) {
+      @content ;
+    }
+  }
+
+  @else if $point==zero-xxxs {
+    @media (min-width: $media-zero) and (max-width: $media-xxxs) {
+      @content ;
+    }
+  }
+
+  @if $point==zero {
+    @media (min-width: $media-zero) {
+      @content ;
+    }
+  }
+
+  @else if $point==-zero {
+    @media (max-width: $media-zero) {
+      @content ;
+    }
+  }
+}

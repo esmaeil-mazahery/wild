@@ -1,0 +1,253 @@
+syntax = "proto3";
+
+package pb_auth;
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "models.proto";
+
+option go_package = "github.com/EsmaeilMazahery/wild/proto/pb/pb_auth";
+
+// These annotations are used when generating the OpenAPI file.
+option (protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    version: "1.0"
+  },
+  external_docs: {
+    url: "https://github.com/EsmaeilMazahery/wild",
+    description: "gRPC-gateway wild repository"
+  },
+  schemes: HTTP,
+  schemes: HTTPS,
+};
+
+service AuthService {
+
+  rpc Login(LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/login"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Login member"
+      description: "Login to the server and get token."
+      tags: "Auth"
+    };
+  };
+
+  rpc ForgetPassword(ForgetPasswordRequest) returns (ForgetPasswordResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/forget-password"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Forget Password member"
+      description: "Forget Password"
+      tags: "Auth"
+    };
+  };
+
+  rpc ForgetPasswordChange(ForgetPasswordChangeRequest) returns (ForgetPasswordChangeResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/forget-password-change"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Forget Password member"
+      description: "Forget Password"
+      tags: "Auth"
+    };
+  };
+
+  rpc Register(RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/register"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Forget Password member"
+      description: "Forget Password"
+      tags: "Auth"
+    };
+  };
+
+  rpc ChangeImageProfile(ChangeImageProfileRequest) returns (ChangeImageProfileResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/change-image-profile"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Change Image Profile"
+      description: "Change Image Profile"
+      tags: "Auth"
+    };
+  };
+
+  rpc ChangeImageHeader(ChangeImageHeaderRequest) returns (ChangeImageHeaderResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/change-image-header"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Change Image Header"
+      description: "Change Image Header"
+      tags: "Auth"
+    };
+  };
+
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/change-password"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Change Image Profile"
+      description: "Change Image Profile"
+      tags: "Auth"
+    };
+  };
+
+  rpc Suggestion(SuggestionRequest) returns (SuggestionResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/suggestion"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Change Image Profile"
+      description: "Change Image Profile"
+      tags: "Auth"
+    };
+  };
+
+  rpc Followers(FollowersRequest) returns (FollowersResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/followers"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Change Image Profile"
+      description: "Change Image Profile"
+      tags: "Auth"
+    };
+  };
+
+  rpc Followings(FollowingsRequest) returns (FollowingsResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/followings"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Change Image Profile"
+      description: "Change Image Profile"
+      tags: "Auth"
+    };
+  };
+
+ rpc Follow(FollowRequest) returns (FollowResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/auth/follow"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Change Image Profile"
+      description: "Change Image Profile"
+      tags: "Auth"
+    };
+  };
+
+}
+
+message LoginRequest {
+  string Username = 1;
+  string Password = 2;
+}
+
+message LoginResponse {
+  pb_models.Member Member = 1;
+}
+
+message ForgetPasswordRequest {
+  string Username = 1;
+}
+
+message ForgetPasswordResponse {
+}
+
+message ForgetPasswordChangeRequest
+{
+  string Username = 1;
+  string VerifyCode = 2;
+  string Password = 3;
+}
+
+message ForgetPasswordChangeResponse {
+  pb_models.Member Member = 1;
+}
+
+
+message RegisterRequest{
+  pb_models.Member Member = 1;
+}
+
+message RegisterResponse{
+  pb_models.Member Member = 1;
+}
+
+message ChangeImageProfileRequest{
+  string ImageURL = 1;
+}
+
+message ChangeImageProfileResponse{
+
+}
+
+message ChangeImageHeaderRequest{
+  string ImageURL = 1;
+}
+
+message ChangeImageHeaderResponse{
+
+}
+
+message ChangePasswordRequest {
+  string Username = 1;
+  string Password = 2;
+  string NewPassword = 3;
+}
+
+message ChangePasswordResponse {
+  pb_models.Member Member = 1;
+}
+
+message SuggestionRequest {
+
+}
+
+message SuggestionResponse {
+ repeated  pb_models.Member Members = 1;
+}
+
+message FollowersRequest {
+
+}
+
+message FollowersResponse {
+ repeated  pb_models.Member Members = 1;
+}
+
+message FollowingsRequest {
+
+}
+
+message FollowingsResponse {
+ repeated  pb_models.Member Members = 1;
+}
+
+message FollowRequest {
+  string MemberID = 1;
+  bool Follow = 2;
+}
+
+message FollowResponse {
+  bool Result = 1;
+}

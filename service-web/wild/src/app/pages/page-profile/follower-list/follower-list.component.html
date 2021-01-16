@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="header">
+        {{Members.length}}
+    </div>
+    <div class="item" *ngFor="let item of Members">
+        <img *ngIf="item.Image" [src]="AddBaseUrlFileServer(item.Image)">
+        <span *ngIf="!item.Image" class="material-icons">
+            account_circle
+        </span>
+        <div class="n">
+            <span class="name">{{item.Name+" "+item.Family}}</span>
+            <span class="username">{{item.Username}}</span>
+        </div>
+        <!-- <button mat-flat-button (click)="follow(item.ID)">
+            دنبال کردن
+        </button> -->
+    </div>
+</div>

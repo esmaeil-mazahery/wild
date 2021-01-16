@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  padding: 10px 0px 10px 50px;
+  border-bottom: 1px solid #D1D1D1;
+
+  .profile {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    padding: 0px 10px;
+    object-fit: cover;
+  }
+
+  .profile.material-icons {
+    font-size: 45px;
+    padding: 0px 10px;
+  }
+
+
+  .post {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      height: 250px;
+      object-fit: cover;
+      align-self: stretch;
+    }
+
+    p {
+      padding-top: 10px;
+    }
+
+    .extend {
+      button.active {
+
+        .material-icons {
+          color: #00874C;
+        }
+      }
+
+      .material-icons.red {
+        color: red;
+      }
+    }
+
+    .comment {
+      background-color: #F2FFF9;
+    }
+  }
+}

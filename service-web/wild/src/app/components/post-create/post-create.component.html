@@ -1,0 +1,24 @@
+<input type="file" #file style="display: none" (change)="onFilesAdded()"
+  accept="image/png, image/jpg, image/jpeg, image/gif, .bmp" />
+
+<mat-card class="container">
+  <div class="editor">
+    <img *ngIf="image" [src]="AddBaseUrlFileServer(image)">
+    <mat-form-field class="form-item">
+      <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" placeholder="بنویسید ..."
+        [formControl]="Content" required></textarea>
+    </mat-form-field>
+  </div>
+  <div class="action">
+    <button class="img" mat-icon-button (click)="addFiles()">
+      <span class="material-icons">
+        wallpaper
+      </span>
+    </button>
+    <button class="send" color="primary" mat-mini-fab [disabled]="!Content.valid || uploading" (click)="onSubmit()">
+      <span class="material-icons rtl">
+        send
+      </span>
+    </button>
+  </div>
+</mat-card>

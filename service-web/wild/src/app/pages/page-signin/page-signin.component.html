@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>ورود</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill">
+      <mat-label>نام کاربری</mat-label>
+      <input matInput formControlName='Username'>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>رمز عبور</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName='Password'>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid">ورود</button>
+    <a href="/signup">ثبت نام</a>
+    <mat-spinner *ngIf="loading" diameter="40"></mat-spinner>
+  </form>
+</div>

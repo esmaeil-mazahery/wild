@@ -1,0 +1,26 @@
+variables:
+  CONTAINER_IMAGE: wild-ng
+  GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  only:
+    - merge_requests
+  script:
+    - docker build --network my-network -t ${CONTAINER_IMAGE} .
+
+deploy:
+  stage: deploy
+  only:
+    - merge_requests
+  # except: temporary for fast deployment
+  #   - merge_requests
+  script:
+    - docker stop wild-ng || true && docker rm wild-ng || true
+    - docker run --restart always --network my-network -d --name wild-ng ${CONTAINER_IMAGE}
+  environment:
+    name: production

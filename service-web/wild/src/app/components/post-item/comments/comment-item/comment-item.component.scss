@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  padding: 10px 0px 10px 50px;
+  border-bottom: 1px solid #D1D1D1;
+
+  .profile {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    padding: 0px 10px;
+  }
+
+  .profile.material-icons {
+    font-size: 45px;
+    padding: 0px 10px;
+  }
+
+
+  .comment {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+
+      h4 {
+        margin-bottom: 0px;
+        margin-top: 4px;
+      }
+
+      .material-icons {
+        font-size: 18px;
+
+        &.red {
+          color: red;
+        }
+      }
+    }
+
+    img {
+      height: 250px;
+      object-fit: cover;
+      align-self: stretch;
+    }
+
+    p {
+      padding-top: 10px;
+    }
+
+
+  }
+}

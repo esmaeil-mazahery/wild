@@ -1,0 +1,26 @@
+variables:
+  CONTAINER_IMAGE: wild-api
+  GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  only:
+    - merge_requests
+  script:
+    - docker build --network my-network -t ${CONTAINER_IMAGE} .
+
+deploy:
+  stage: deploy
+  only:
+    - merge_requests
+  # except:
+  #   - merge_requests
+  script:
+    - docker stop wild-api || true && docker rm wild-api || true
+    - docker run --restart always --network my-network --env-file $env -v /home/ubuntu/app/file-server:/app/files -d --name wild-api wild-api
+  environment:
+    name: production

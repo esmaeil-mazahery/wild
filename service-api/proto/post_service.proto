@@ -1,0 +1,134 @@
+syntax = "proto3";
+
+package pb_post;
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "models.proto";
+
+option go_package = "github.com/EsmaeilMazahery/wild/proto/pb/pb_post";
+
+// These annotations are used when generating the OpenAPI file.
+option (protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    version: "1.0"
+  },
+  external_docs: {
+    url: "https://github.com/EsmaeilMazahery/wild",
+    description: "gRPC-gateway wild repository"
+  },
+  schemes: HTTP,
+  schemes: HTTPS,
+};
+
+service PostService {
+
+  rpc Register(RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/post/register"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Register New Post"
+      description: "Register New Post"
+      tags: "Post"
+    };
+  };
+
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/post/list"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "List Post"
+      description: "List Post"
+      tags: "Posts"
+    };
+  };
+
+  rpc Like(LikeRequest) returns (LikeResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/post/like"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Like Post"
+      description: "Like Post"
+      tags: "Like"
+    };
+  };
+
+  rpc MyPosts(MyPostsRequest) returns (MyPostsResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/post/my-posts"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "List  Post"
+      description: "List  Post"
+      tags: "Posts"
+    };
+  };
+
+  rpc Search(SearchRequest) returns (SearchResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/post/search"
+      body : "*"
+    };
+    option (protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "List Search"
+      description: "List Search"
+      tags: "Search"
+    };
+  };
+
+
+
+
+}
+
+message RegisterRequest{
+  pb_models.Post Post=1;
+}
+
+message RegisterResponse{
+  string ID = 1;
+}
+
+message ListRequest{
+  int64 Page=1;
+}
+
+message ListResponse{
+  repeated pb_models.Post Posts = 1;
+  bool ExistMore = 2;
+}
+
+message LikeRequest{
+  string ID=1;
+  bool Like=2;
+}
+
+message LikeResponse{
+  bool Result = 1;
+}
+
+message MyPostsRequest{
+  int64 Page=1;
+}
+
+message MyPostsResponse{
+  repeated pb_models.Post Posts = 1;
+  bool ExistMore = 2;
+}
+
+message SearchRequest{
+  int64 Page=1;
+  string Term=2;
+}
+
+message SearchResponse{
+  repeated pb_models.Post Posts = 1;
+  bool ExistMore = 2;
+}

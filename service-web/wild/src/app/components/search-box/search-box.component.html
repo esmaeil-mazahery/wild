@@ -1,0 +1,10 @@
+<mat-card class="container">
+    <input maxlength="2048" placeholder="جستجو" name="q" type="text" aria-haspopup="false" autocapitalize="off"
+        autocomplete="off" autocorrect="off" autofocus="" spellcheck="false" title="Search" value="" aria-label="Search"
+        [formControl]="Term" required (keydown)="onEnter($event)">
+    <button mat-icon-button [disabled]="!Term.valid" (click)="onSearch()">
+        <span class="material-icons">
+            search
+        </span>
+    </button>
+</mat-card>

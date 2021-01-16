@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="menu">
+    <app-desktop-menu></app-desktop-menu>
+  </div>
+  <div class="list">
+    <app-post-create (added)="addedPost($event)"></app-post-create>
+    <hr>
+    <app-post-list [list]="postList"></app-post-list>
+  </div>
+</div>
+<div class="mobile">
+  <app-mobile-menu></app-mobile-menu>
+</div>

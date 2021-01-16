@@ -1,0 +1,65 @@
+<input type="file" #file style="display: none" (change)="onFilesAdded()"
+  accept="image/png, image/jpg, image/jpeg, image/gif, .bmp" />
+
+<div class="container">
+  <div class="menu">
+    <app-desktop-menu></app-desktop-menu>
+  </div>
+  <mat-card class="profile">
+    <div class="header" (click)="!profile.ImageHeader?addFiles(false):null">
+      <img *ngIf="profile.ImageHeader" (click)="addFiles(false)" [src]="AddBaseUrlFileServer(profile.ImageHeader)">
+      <button *ngIf="profile.ImageHeader" mat-icon-button color="warn" (click)="removeImage(false)">
+        <span class="material-icons">
+          delete_outline
+        </span>
+      </button>
+    </div>
+    <div class="name-img">
+      <div class="img">
+        <img *ngIf="profile.Image" [src]="AddBaseUrlFileServer(profile.Image)">
+        <span *ngIf="!profile.Image" (click)="addFiles(true)" class="material-icons">
+          account_circle
+        </span>
+
+        <button *ngIf="profile.Image" class="add" mat-icon-button (click)="addFiles(true)">
+          <span class="material-icons">
+            camera_alt
+          </span>
+        </button>
+
+        <button *ngIf="profile.Image" class="remove" mat-icon-button (click)="removeImage(true)">
+          <span class="material-icons">
+            delete_outline
+          </span>
+        </button>
+      </div>
+      <div class="name">
+        {{profile.Name+" "+profile.Family}}
+      </div>
+      <div class="space"></div>
+      <div class="username">
+        {{profile.Username}}
+      </div>
+    </div>
+    <div *ngIf="profile.Biography" class="bio">
+      {{profile.Biography}}
+    </div>
+    <div class="tab">
+      <mat-tab-group>
+        <mat-tab label="مطالب">
+          <app-post-list [list]="postList"></app-post-list>
+        </mat-tab>
+        <mat-tab label="دنبال کننده">
+          <app-follower-list></app-follower-list>
+        </mat-tab>
+        <mat-tab label="دنبال شده">
+          <app-following-list></app-following-list>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </mat-card>
+</div>
+<div class="mobile">
+
+  <app-mobile-menu></app-mobile-menu>
+</div>
