@@ -46,7 +46,7 @@ func NewCommentServer(
 	}
 }
 
-// Add ...
+// Add comment on a post
 func (server *CommentServer) Add(ctx context.Context, req *pb_comment.AddRequest) (*pb_comment.AddResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {
@@ -144,7 +144,7 @@ func (server *CommentServer) List(ctx context.Context, req *pb_comment.ListReque
 	return res, nil
 }
 
-// Like ...
+// Like like a post
 func (server *CommentServer) Like(ctx context.Context, req *pb_comment.LikeRequest) (*pb_comment.LikeResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {
@@ -169,7 +169,7 @@ func (server *CommentServer) Like(ctx context.Context, req *pb_comment.LikeReque
 	return res, nil
 }
 
-// MyComments ..
+// MyComments list of my comments
 func (server *CommentServer) MyComments(ctx context.Context, req *pb_comment.MyCommentsRequest) (*pb_comment.MyCommentsResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {

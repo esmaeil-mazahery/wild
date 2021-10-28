@@ -82,7 +82,7 @@ func (server *AuthServer) Login(ctx context.Context, req *pb_auth.LoginRequest) 
 	return res, nil
 }
 
-// ForgetPassword is a unary RPC to login member
+// ForgetPassword is a unary RPC to forget password
 func (server *AuthServer) ForgetPassword(ctx context.Context, req *pb_auth.ForgetPasswordRequest) (*pb_auth.ForgetPasswordResponse, error) {
 
 	member, err := server.memberStore.FindByUsername(ctx, req.GetUsername())
@@ -112,7 +112,7 @@ func (server *AuthServer) ForgetPassword(ctx context.Context, req *pb_auth.Forge
 	return res, nil
 }
 
-// ForgetPasswordChange is a unary RPC to login member
+// ForgetPasswordChange is a unary RPC to change password after recive verify code for forget password
 func (server *AuthServer) ForgetPasswordChange(ctx context.Context, req *pb_auth.ForgetPasswordChangeRequest) (*pb_auth.ForgetPasswordChangeResponse, error) {
 
 	member, err := server.memberStore.FindByUsername(ctx, req.GetUsername())
@@ -162,7 +162,7 @@ func (server *AuthServer) ForgetPasswordChange(ctx context.Context, req *pb_auth
 	return nil, status.Errorf(codes.Internal, "کد تایید اشتباه است")
 }
 
-// Register is a unary RPC to login member
+// Register is a unary RPC to register member
 func (server *AuthServer) Register(ctx context.Context, req *pb_auth.RegisterRequest) (*pb_auth.RegisterResponse, error) {
 
 	req.Member.Mobile = strings.TrimLeft(req.Member.GetMobile(), "0")
@@ -208,7 +208,7 @@ func (server *AuthServer) Register(ctx context.Context, req *pb_auth.RegisterReq
 	return res, nil
 }
 
-//ChangeImageProfile ...
+//ChangeImageProfile change image member
 func (server *AuthServer) ChangeImageProfile(ctx context.Context, req *pb_auth.ChangeImageProfileRequest) (*pb_auth.ChangeImageProfileResponse, error) {
 	member, err := server.GetAuthMember(ctx)
 	if err != nil {
@@ -224,7 +224,7 @@ func (server *AuthServer) ChangeImageProfile(ctx context.Context, req *pb_auth.C
 	return res, nil
 }
 
-//ChangeImageHeader ...
+//ChangeImageHeader chnage image header of profile member
 func (server *AuthServer) ChangeImageHeader(ctx context.Context, req *pb_auth.ChangeImageHeaderRequest) (*pb_auth.ChangeImageHeaderResponse, error) {
 	member, err := server.GetAuthMember(ctx)
 	if err != nil {
@@ -283,7 +283,7 @@ func (server *AuthServer) ChangePassword(ctx context.Context, req *pb_auth.Chang
 	return res, nil
 }
 
-// Suggestion ..
+// Suggestion get list of suggestion folower for member
 func (server *AuthServer) Suggestion(ctx context.Context, req *pb_auth.SuggestionRequest) (*pb_auth.SuggestionResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {
@@ -314,7 +314,7 @@ func (server *AuthServer) Suggestion(ctx context.Context, req *pb_auth.Suggestio
 	return res, nil
 }
 
-// Followers ..
+// Followers list of followers
 func (server *AuthServer) Followers(ctx context.Context, req *pb_auth.FollowersRequest) (*pb_auth.FollowersResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {
@@ -346,7 +346,7 @@ func (server *AuthServer) Followers(ctx context.Context, req *pb_auth.FollowersR
 	return res, nil
 }
 
-// Followings ..
+// Followings list of following
 func (server *AuthServer) Followings(ctx context.Context, req *pb_auth.FollowingsRequest) (*pb_auth.FollowingsResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {
@@ -378,7 +378,7 @@ func (server *AuthServer) Followings(ctx context.Context, req *pb_auth.Following
 	return res, nil
 }
 
-// Follow ..
+// Follow follow an account
 func (server *AuthServer) Follow(ctx context.Context, req *pb_auth.FollowRequest) (*pb_auth.FollowResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {

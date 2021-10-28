@@ -1,7 +1,7 @@
 generate:
 	mkdir -p OpenAPI
 
-	rm -r proto/pb
+	rm -r proto/pb | true
 	mkdir -p proto/pb
 	mkdir -p proto/pb/pb_models
 	mkdir -p proto/pb/pb_auth
@@ -36,6 +36,7 @@ generate:
 
 	# Generate static assets for OpenAPI UI
 	statik -m -f -src OpenAPI/
+
 
 goInstall:
 	go install

@@ -63,6 +63,7 @@ func (store *DatabaseNotifyStore) Add(ctx context.Context, notify *model.Notify)
 	return insertResult.InsertedID.(primitive.ObjectID).Hex(), nil
 }
 
+//like a post
 func (store *DatabaseNotifyStore) AddLikePost(ctx context.Context, postID string, targetMemberID string) error {
 
 	objectPostID, err := primitive.ObjectIDFromHex(postID)
@@ -96,6 +97,7 @@ func (store *DatabaseNotifyStore) AddLikePost(ctx context.Context, postID string
 	return err
 
 }
+
 func (store *DatabaseNotifyStore) AddLikeComment(ctx context.Context, commentID string, targetMemberID string) error {
 
 	objectCommentID, err := primitive.ObjectIDFromHex(commentID)

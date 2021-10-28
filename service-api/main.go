@@ -38,8 +38,10 @@ func main() {
 	log := grpclog.NewLoggerV2(os.Stdout, ioutil.Discard, ioutil.Discard)
 	grpclog.SetLoggerV2(log)
 
+	//get grpc port from environment
 	port := os.Getenv("SERVE_PORT")
 
+	//get jwt secure code from environment
 	secretKey := os.Getenv("SERVICE_SECRET_KEY")
 
 	tokenLoginDuration, err := strconv.Atoi(os.Getenv("SERVICE_TOKEN_LOGIN_DURATION"))

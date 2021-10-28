@@ -47,7 +47,7 @@ func NewPostServer(
 	}
 }
 
-// Register is a unary RPC to login member
+// Register add a post
 func (server *PostServer) Register(ctx context.Context, req *pb_post.RegisterRequest) (*pb_post.RegisterResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {
@@ -151,7 +151,7 @@ func (server *PostServer) List(ctx context.Context, req *pb_post.ListRequest) (*
 	return res, nil
 }
 
-// Like ...
+// Like like a post
 func (server *PostServer) Like(ctx context.Context, req *pb_post.LikeRequest) (*pb_post.LikeResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {
@@ -176,7 +176,7 @@ func (server *PostServer) Like(ctx context.Context, req *pb_post.LikeRequest) (*
 	return res, nil
 }
 
-// MyPosts ..
+// MyPosts list of my post
 func (server *PostServer) MyPosts(ctx context.Context, req *pb_post.MyPostsRequest) (*pb_post.MyPostsResponse, error) {
 	memberID, err := server.GetAuthMemberID(ctx)
 	if err != nil {
