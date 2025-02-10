@@ -1,3 +1,6 @@
 # wild
 
-a simple social network with golang / mongodb / redis &amp;...
+simple social network 
+
+front-end : angular / material
+back-end : golang / mongodb / redis & ...
